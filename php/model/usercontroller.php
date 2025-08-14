@@ -62,13 +62,13 @@ class UserController {
                 $user = $sql->fetch_assoc();
                 $_SESSION['id'] = $user['id'];
                 if ($user['role'] == 'admin') {
-                    header("Location: " . $this->url . "php/view/admin_dashboard.php");
+                    header("Location: " . $this->url . "php/view/admin/");
                     exit();
                 }elseif($user['role'] == 'student'){
-                    header("Location: " . $this->url . "php/view/dashboard.php");
+                    header("Location: " . $this->url . "php/view/dashboard/");
                     exit();
                 }elseif ($user['role'] == 'lecturer') {
-                    header("Location: " . $this->url . "php/view/lecturer_dashboard.php");
+                    header("Location: " . $this->url . "php/view/lecturer/");
                     exit();
                 }else{
                     $_SESSION['login_error'] = "Invalid user";
