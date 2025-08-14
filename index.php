@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExamPro - Online CBT Exam App</title>
+  <title>ExameNow - Online CBT Exam App</title>
   <style>
     body { margin: 0; font-family: Arial, sans-serif; }
     header, section { padding: 60px 20px; }
@@ -24,16 +24,16 @@
 
 <!-- 1. HERO SECTION -->
 <header>
-  <h1>Welcome to ExamPro</h1>
+  <h1>Welcome to ExameNow</h1>
   <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
   <a href="login.php" class="btn">Get Started</a>
 </header>
 
 <!-- 2. ABOUT SECTION -->
 <section>
-  <div class="section-title">
-    <h2>About ExamPro</h2>
-    <p>ExamPro is a modern online CBT platform designed to make test-taking easy, fast, and effective.</p>
+  <div class="section-title" >
+    <h2>About Us</h2>
+    <p>ExameNow is a cutting-edge online Computer-Based Testing (CBT) platform designed to transform the way students and professionals take exams. With an intuitive interface, lightning-fast performance, and robust features, it makes the entire test-taking process easy, seamless, and highly efficient, ensuring a smooth experience from login to result analysis.</p>
   </div>
 </section>
 
@@ -86,7 +86,7 @@
   </div>
   <div class="testimonials">
     <div class="card">
-      <p>"ExamPro helped me pass my exams with confidence!"</p>
+      <p>"ExameNow helped me pass my exams with confidence!"</p>
       <strong>- Jane Doe</strong>
     </div>
     <div class="card">
@@ -105,7 +105,7 @@
 
 <!-- 7. FOOTER -->
 <footer>
-  <p>© <?php echo date("Y"); ?> ExamPro. All rights reserved.</p>
+  <p>© <?php echo date("Y"); ?> ExameNow. All rights reserved.</p>
 </footer>
 
 </body>
