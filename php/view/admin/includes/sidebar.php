@@ -31,6 +31,12 @@
             </a>
           </li>
           <li>
+            <a href="course.php">
+              <i class="tim-icons icon-single-copy-04"></i>
+              <p>Courses</p>
+            </a>
+          </li>
+          <li>
             <a href="lecturer.php">
               <i class="tim-icons icon-user-run"></i>
               <p>Lecturer</p>
@@ -44,7 +50,7 @@
           </li>
           
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="../../controller/logout.php">
               <i class="tim-icons icon-double-left"></i>
               <p>Logout</p>
             </a>

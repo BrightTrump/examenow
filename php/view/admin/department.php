@@ -86,7 +86,7 @@ $department = new DepartmentController();
               <div class="card-body">
 
                 <div class="">
-                  <table class="table table-striped table-bordered">
+                  <table class="table">
                     <thead class="">
                       <tr>
                         <th scope="col">S/N</th>

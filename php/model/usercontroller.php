@@ -82,4 +82,64 @@ class UserController {
             }
         }
     }
+    public function allusers()
+    {
+        $prepared = "SELECT * FROM `users` where id != '1' and role = 'student' order by id desc";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+            $i = 1;
+            foreach ($sql as $value) {
+                if ($value['status'] == 1) {
+                    $status = '<span class="badge badge-success">Active</span>';
+                } else {
+                    $status = '<span class="badge badge-danger">Inactive</span>';
+                }
+                echo '  <tr>
+                            <th>'.$i++.'</th>
+                            <th>'.$value['fullname'].'</th>
+                            <th>'.$value['email'].'</th>
+                            <th class="text-uppercase">'.$value['role'].'</th>
+                            <th>'.$value['createdAt'].'</th>
+                            <th><a href="../../controller/changeuserstatus.php?id='.$value['id'].'" class="text-danger">'.$status.'</a></th>
+                        </tr>';
+            }
+        }else {
+            echo '<tr>
+                    <td colspan="5" class="text-center">No departments found</td>
+                  </tr>';
+        }
+    }
+    public function changeuserstatus($user_id) {
+        $prepared = "SELECT * FROM `users` WHERE id = '$user_id'";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+            $user = $sql->fetch_assoc();
+            $new_status = ($user['status'] == 1) ? 0 : 1;
+            $update_query = "UPDATE `users` SET status = '$new_status' WHERE id = '$user_id'";
+            if ($this->connection->query($update_query) === TRUE) {
+                $_SESSION['status_change_success'] = "User status updated successfully!";
+            } else {
+                $_SESSION['status_change_error'] = "Failed to update user status.";
+            }
+        } else {
+            $_SESSION['status_change_error'] = "User not found.";
+        }
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit();
+    }
+    public function countofusers(){
+        $prepared = "SELECT COUNT(*) as total FROM `users` WHERE role = 'student'";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+            $details = $sql->fetch_assoc();
+            return $details['total'];
+        }
+        return 0;
+    }
+    public function logout() {
+        session_unset();
+        session_destroy();
+        header("Location: " . $this->url . "login.php");
+        exit();
+    }
 }

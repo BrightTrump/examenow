@@ -1,10 +1,13 @@
 <?php
 include '../../model/config.php';
-
-include '../../model/usercontroller.php';
+include '../../model/departmentcontroller.php';
+include '../../model/programcontroller.php';
 include_once 'includes/text.php';
+include '../../model/coursecontroller.php';
 
-$user = new UserController();
+$department = new DepartmentController();
+$program = new ProgramController();
+$courses = new CourseController();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,39 +46,111 @@ $user = new UserController();
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Programs</h5>
-                    <h2 class="card-title">Manage programs.</h2>
+                    <h5 class="card-category">Courses</h5>
+                    <h2 class="card-title">Manage courses.</h2>
+                  </div>
+                  <div>
+                    <a href="alldepartments.php" class="btn btn-primary">All Departments</a>
                   </div>
                 </div>
               </div>
-              
               <div class="card-body">
-                  
-                      <span class="text-success">
+                <div class="row">
+                  <div class="col-md-4 offset-md-4">
+                    <form method="post" action="../../controller/createcourse.php">
+                      <span class="text-danger">
                         <?php
-                        if (isset($_SESSION['status_change_success'])) {
-                          echo $_SESSION['status_change_success'];
-                          unset($_SESSION['status_change_success']);
+                        if (isset($_SESSION['course_error'])) {
+                          echo $_SESSION['course_error'];
+                          unset($_SESSION['course_error']);
                         }
                         ?>
                       </span>
-                <div class="">
-                  <table class="table">
-                    <thead class="">
-                      <tr>
-                        <th scope="col">S/N</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?= $user->allusers() ?>
-                    </tbody>
-                  </table>
-                </div>
+                      <span class="text-success">
+                        <?php
+                        if (isset($_SESSION['course_success'])) {
+                          echo $_SESSION['course_success'];
+                          unset($_SESSION['course_success']);
+                        }
+                        ?>
+                      </span>
+                      <div class="form-group">
+                        <label for="courseName">Course Name</label>
+                        <input type="text" class="form-control" name="courseName" placeholder="Enter course name">
+                      </div>
+                      <div>
+                        <label for="courseCode">Course Code</label>
+                        <input type="text" class="form-control" name="courseCode" placeholder="Enter course code">
+                      </div>
+                      <div class="form-group">
+                        <label for="departmentName">Department</label>
+                        <select name="departmentName" id="department"  class="form-control bg-dark" onchange="departmentprograms()">
+                          <option value="">Select department</option>
+                          <option value="10000">General Studies</option>
+                          <?= $department->departmentasoption() ?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="departmentName">Programs</label>
+                        <div id="programs">
 
+                        </div>
+                          
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <select name="semester" class="form-control bg-dark">
+                          <option value="">Select semester</option>
+                          <option value="1">First Semester</option>
+                          <option value="2">Second Semester</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="level">Level</label>
+                        <select name="level" class="form-control bg-dark">
+                          <option value="">Select level</option>
+                          <option value="nd">ND</option>
+                          <option value="hnd">HND</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="subLevel">Sub Level</label>
+                        <select name="subLevel" class="form-control bg-dark">
+                          <option value="">Select sub level</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                        </select>
+                      </div>
+
+
+                      <button type="submit" class="btn btn-primary">Add Course</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                        <h5 class="card-title">All General Courses</h5>
+                        <div>
+                          <table class="table">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Course Name</th>
+                                <th>Course Code</th>
+                                <th>Level</th>
+                                <th>Sub Level</th>
+                                <th>Semester</th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <?php
+                                $courses->allgeneralcourses()
+                              ?>
+                            </tbody>
+                          </table>
+                        </div>
               </div>
             </div>
           </div>
@@ -85,7 +160,7 @@ $user = new UserController();
 
     </div>
   </div>
- 
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
@@ -227,6 +302,19 @@ $user = new UserController();
         token: "ee6fab19c5a04ac1a32a645abde4613a",
         application: "black-dashboard-free"
       });
+  </script>
+  <script>
+      function departmentprograms() {
+        $department = document.getElementById('department').value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("programs").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "../../controller/get_programs.php?department=" + $department, true);
+        xhttp.send();
+      }
   </script>
 </body>
 

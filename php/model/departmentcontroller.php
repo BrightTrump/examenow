@@ -71,4 +71,31 @@ class DepartmentController
             }
         }
     }
+    public function departmentasoptionwithid(){
+        $prepared = "SELECT * FROM `department` order by id desc";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+            foreach ($sql as $value) {
+                echo '<div class="col-md-3">
+                    <a href="courseperdepartment.php?id='.$value['id'].'">
+                      <div class="card">
+                        <div class="card-body bg-primary">
+                          <h5 class="card-title text-white text-center">'.$value['department_name'].'</h5>
+                          <p class="card-text text-white text-center">'.$value['department_code'].'</p>
+                        </div>
+                      </div>
+                    </a>
+                </div>';
+            }
+        }
+    }
+    public function countofdepartments(){
+        $prepared = "SELECT COUNT(*) as total FROM `department`";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+            $details = $sql->fetch_assoc();
+            return $details['total'];
+        }
+        return 0;
+    }
 }

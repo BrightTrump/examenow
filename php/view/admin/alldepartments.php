@@ -1,10 +1,9 @@
 <?php
 include '../../model/config.php';
-
-include '../../model/usercontroller.php';
+include '../../model/departmentcontroller.php';
 include_once 'includes/text.php';
 
-$user = new UserController();
+$department = new DepartmentController();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,40 +42,17 @@ $user = new UserController();
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Programs</h5>
-                    <h2 class="card-title">Manage programs.</h2>
+                    <h5 class="card-category">Courses for each department</h5>
+                    <h2 class="card-title">Manage department.</h2>
                   </div>
                 </div>
               </div>
-              
               <div class="card-body">
-                  
-                      <span class="text-success">
-                        <?php
-                        if (isset($_SESSION['status_change_success'])) {
-                          echo $_SESSION['status_change_success'];
-                          unset($_SESSION['status_change_success']);
-                        }
-                        ?>
-                      </span>
-                <div class="">
-                  <table class="table">
-                    <thead class="">
-                      <tr>
-                        <th scope="col">S/N</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?= $user->allusers() ?>
-                    </tbody>
-                  </table>
+                <div class="row">
+                  <?php $department->departmentasoptionwithid(); ?>
                 </div>
-
               </div>
+              
             </div>
           </div>
         </div>
@@ -85,7 +61,7 @@ $user = new UserController();
 
     </div>
   </div>
- 
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
