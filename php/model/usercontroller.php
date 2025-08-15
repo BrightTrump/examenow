@@ -136,10 +136,31 @@ class UserController {
         }
         return 0;
     }
+    public function userdetails($user_id) {
+        $prepared = "SELECT * FROM `users` WHERE id = '$user_id'";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+            return $sql->fetch_assoc();
+        } else {
+            return null;
+        }
+
+    }
     public function logout() {
         session_unset();
         session_destroy();
         header("Location: " . $this->url . "login.php");
         exit();
+    }
+
+    public function startTest($course_id, $matno) {
+        if ($course_id == '' || $matno == '') {
+            $_SESSION['test_error'] = "All fields are required.";
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+            exit();
+        }
+
+        
+        
     }
 }

@@ -98,4 +98,13 @@ class DepartmentController
         }
         return 0;
     }
+    public function departmentName($department_id){
+        $prepared = "SELECT department_name FROM `department` WHERE id = '$department_id'";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+            $details = $sql->fetch_assoc();
+            return $details['department_name'];
+        }
+        return null;
+    }
 }
