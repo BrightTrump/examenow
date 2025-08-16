@@ -23,12 +23,12 @@
 <body>
 
 <!-- 1. HERO SECTION -->
-<header>
-  <h1>Welcome to ExameNow</h1>
-  <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
-  <a href="login.php" class="btn">Get Started</a>
-  <a href="test.php" class="btn">Start Test</a>
-</header>
+<?php include 'header.php'; ?>
+<a href="login.php" class="btn">Get Started</a>
+<a href="test.php" class="btn">Start Test</a>
+<!-- 1. HERO SECTION -->
+
+
 
 <!-- 2. ABOUT SECTION -->
 <section>

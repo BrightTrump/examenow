@@ -24,12 +24,10 @@ $performance = $_GET['performance'] ?? '0';
 <body>
 
 <!-- 1. HERO SECTION -->
-<header>
-  <h1>Thanks for taking this test</h1>
-  <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
+
+  <?php include 'header.php'; ?>
   <a href="login.php" class="btn">Get Started</a>
-  
-</header>
+
 
 <!-- 2. ABOUT SECTION -->
 <section>
