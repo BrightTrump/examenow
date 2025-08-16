@@ -2,9 +2,9 @@
 session_start();
 class config{
     public $host = "localhost";
-    public $user = "root";
-    public $password = "";
-    public $database = "exampro";
+    public $user = "u629877266_examenow";
+    public $password = "Examenow1234@";
+    public $database = "u629877266_examenow";
 
     public $connection;
 
