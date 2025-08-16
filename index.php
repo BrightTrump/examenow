@@ -26,8 +26,8 @@
 <header>
   <h1>Welcome to ExameNow</h1>
   <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
-  <a href="login.php" class="btn">Login</a>
-  <a href="test.php" class="btn">Start Test</a>
+  <a href="login.php" class="btn">Logins</a>
+  <a href="test.php" class="btn">Start Exam</a>
 </header>
 
 <!-- 2. ABOUT SECTION -->
