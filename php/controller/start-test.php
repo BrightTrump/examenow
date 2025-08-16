@@ -2,10 +2,12 @@
   include '../model/config.php';
   include '../model/usercontroller.php';
 
-  $course_id = $_POST['course_id'];
+  $schedule_id = $_POST['schedule_id'];
   $matno = $_POST['matno'];
 
+
+
 $user = new UserController();
-$user->startTest($course_id, $matno);
+$user->startTest($schedule_id, $matno);
 
   

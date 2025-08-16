@@ -152,15 +152,22 @@ class UserController {
         header("Location: " . $this->url . "login.php");
         exit();
     }
+    
 
-    public function startTest($course_id, $matno) {
-        if ($course_id == '' || $matno == '') {
+    public function startTest($schedule_id, $matno) {
+        
+
+        if ($schedule_id == '' || $matno == '') {
             $_SESSION['test_error'] = "All fields are required.";
             header("Location: " . $_SERVER['HTTP_REFERER']);
             exit();
         }
+        $_SESSION['schedule_id'] = $schedule_id;
+        $_SESSION['usermatno'] = $matno;
 
         
-        
+
+        header("Location: " . $this->url . "start-test.php");
+        exit();
     }
 }

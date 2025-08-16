@@ -1,15 +1,18 @@
 <?php
 
-class TestController {
+class TestController
+{
     public $connection;
     public $url = "http://localhost/examnow/examenow/";
 
-    public function __construct() {
+    public function __construct()
+    {
         $conn = new config();
         $this->connection = $conn->getConnection();
     }
 
-    public function createQuestion($course_id, $questionText, $questionType, $options, $correctAnswer) {
+    public function createQuestion($course_id, $questionText, $questionType, $options, $correctAnswer)
+    {
         if ($course_id == '') {
             $_SESSION['question_error'] = "Course ID is required.";
             header("Location: " . $_SERVER['HTTP_REFERER']);
@@ -31,7 +34,7 @@ class TestController {
             exit();
         }
         $createdAt = date('Y-m-d');
-        $prepared = "INSERT INTO `questions`(`course_id`, `question_text`, `question_type`, `options`, `correct_answer`, `createdAt`, `updatedAt`) VALUES ('$course_id', '$questionText', '$questionType', '".json_encode($options)."', '$correctAnswer', '$createdAt', '$createdAt')";
+        $prepared = "INSERT INTO `questions`(`course_id`, `question_text`, `question_type`, `options`, `correct_answer`, `createdAt`, `updatedAt`) VALUES ('$course_id', '$questionText', '$questionType', '" . json_encode($options) . "', '$correctAnswer', '$createdAt', '$createdAt')";
         $sql = $this->connection->query($prepared);
         if ($sql == TRUE) {
             $_SESSION['question_success'] = "Question created successfully!";
@@ -45,7 +48,8 @@ class TestController {
 
     }
 
-    public function getQuestions($testId) {
+    public function getQuestions($testId)
+    {
         $prepared = "SELECT * FROM `questions` WHERE course_id = '$testId'";
         $sql = $this->connection->query($prepared);
         if ($sql->num_rows > 0) {
@@ -53,7 +57,7 @@ class TestController {
             foreach ($sql as $value) {
                 if ($value['question_type'] != 'mcq') {
                     $options = 'N/A';
-                }else{
+                } else {
                     $options = implode(", ", json_decode($value['options']));
                 }
                 echo '<tr>';
@@ -73,11 +77,13 @@ class TestController {
         }
     }
 
-    public function updateQuestion($questionId, $data) {
+    public function updateQuestion($questionId, $data)
+    {
         // Implementation for updating a question
     }
 
-    public function deleteQuestion($questionId) {
+    public function deleteQuestion($questionId)
+    {
         $prepared = "DELETE FROM `questions` WHERE id = '$questionId'";
         $sql = $this->connection->query($prepared);
         if ($sql == TRUE) {
@@ -91,7 +97,8 @@ class TestController {
         }
     }
 
-    public function scheduleTest($course_id, $test_title, $test_description, $test_time, $test_duration, $user_id){
+    public function scheduleTest($course_id, $test_title, $test_description, $test_time, $test_duration, $user_id)
+    {
         if (empty($course_id) || empty($test_title) || empty($test_description) || empty($test_time) || empty($test_duration)) {
             $_SESSION['test_error'] = "All fields are required.";
             header("Location: " . $_SERVER['HTTP_REFERER']);
@@ -120,7 +127,8 @@ class TestController {
             return null;
         }
     }
-    public function getScheduledTests($user_id) {
+    public function getScheduledTests($user_id)
+    {
         $prepared = "SELECT * FROM `testschedule` WHERE user_id = '$user_id' ORDER BY createdAt DESC";
         $sql = $this->connection->query($prepared);
         if ($sql->num_rows > 0) {
@@ -142,7 +150,8 @@ class TestController {
             echo '<tr><td colspan="6" class="text-center">No scheduled tests found.</td></tr>';
         }
     }
-    public function deleteScheduledTest($testId) {
+    public function deleteScheduledTest($testId)
+    {
         $prepared = "DELETE FROM `testschedule` WHERE id = '$testId'";
         $sql = $this->connection->query($prepared);
         if ($sql == TRUE) {
@@ -155,16 +164,82 @@ class TestController {
             exit();
         }
     }
-    public function getScheduledTestForToday(){
+    public function getScheduledTestForToday()
+    {
+        
         $today = date('Y-m-d');
+       
         $prepared = "SELECT * FROM `testschedule` WHERE test_time = '$today' ";
         $sql = $this->connection->query($prepared);
-        if($sql->num_rows > 0){
-            foreach($sql as $value){
-                echo '<option value="' . $value['course_id'] . '">' . $this->courseDetails($value['course_id'])['course_name'] . '</option>';
+        if ($sql->num_rows > 0) {
+           
+            foreach ($sql as $value) {
+                echo '<option value="' . $value['id'] . '">' . $this->courseDetails($value['course_id'])['course_name'] . '</option>';
             }
-        }else {
+        } else {
             echo '<option value="">No tests scheduled for today</option>';
         }
     }
+    public function getQuestionsByCourse($course_id)
+    {
+
+        $sql = "SELECT * FROM questions WHERE course_id = '$course_id'";
+        $result = $this->connection->query($sql);
+
+        $questions = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $questions[] = $row;
+            }
+        }
+        return $questions;
+    }
+    public function getcoursefromschedule($schedule_id){
+        $sql = "SELECT * FROM testschedule WHERE id = '$schedule_id'";
+        $result = $this->connection->query($sql);
+        if ($result && $result->num_rows > 0) {
+           $details = $result->fetch_assoc();
+            return  $details['course_id'];
+        }
+        return null;
+    }
+    public function submitTest($answers, $course_id, $matno, $schedule_id)
+    {
+        $score = 0;
+        $totalQuestions = count($answers);
+        $today = date('Y-m-d'); // or however you're identifying the test
+
+        foreach ($answers as $question_id => $user_answer) {
+            // Query the correct answer for this question
+            $prepared = "SELECT correct_answer FROM `questions` WHERE id = '$question_id'";
+            $sql = $this->connection->query($prepared);
+
+            if ($sql && $sql->num_rows > 0) {
+                $row = $sql->fetch_assoc();
+                $correct_answer = $row['correct_answer'];
+
+                // Compare user's answer with the correct one
+                if (trim(strtolower($user_answer)) === trim(strtolower($correct_answer))) {
+                    $score++;
+                }
+            }
+        }
+
+        // Calculate percentage
+        $percentage = ($totalQuestions > 0) ? ($score / $totalQuestions) * 100 : 0;
+        $prepared = "INSERT INTO `performance`(`matno`, `course_id`, `dateoftest`, `test_id`, `performance`) VALUES ('$matno','$course_id','$today','$schedule_id','$percentage')";
+        $sql = $this->connection->query($prepared);
+        if ($sql == TRUE) {
+             $_SESSION['sumit_success'] = "Test submitted successfully!";
+            header("Location: " . $this->url . "score.php?performance=$percentage");
+            exit();
+        }
+    //    var_dump( [
+    //         'score' => $score,
+    //         'total' => $totalQuestions,
+
+    //         'percentage' => $percentage
+    //     ]);
+    }
+
 }

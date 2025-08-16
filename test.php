@@ -103,7 +103,7 @@
             </p>
             
             <div class="form-group">
-              <select name="course_id" id="course_id" class="form-control">
+              <select name="schedule_id" id="schedule_id" class="form-control">
                   <option value="">Choose your course</option>
                   <?php $testController->getScheduledTestForToday(); ?>
               </select>
