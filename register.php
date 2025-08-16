@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExamPro - Online CBT Exam App</title>
+  <title>Examenow - Online CBT Exam App</title>
   <style>
     body {
       margin: 0;
@@ -90,7 +90,8 @@
       <div class="row">
         <div class="col-md-4 offset-md-4">
           <h2 class="text-center">Register</h2>
-          <form action="http://localhost/examnow/examenow/php/controller/register.php" method="POST">
+          <!-- <form action="http://localhost/examnow/examenow/php/controller/register.php" method="POST"> -->
+          <form action="http://examenow/php/controller/register.php" method="POST">
             <p class="text-danger">
               <?php
               if (isset($_SESSION['register_error'])) {

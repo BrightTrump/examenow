@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExamPro - Online CBT Exam App</title>
+  <title>ExameNow - Online CBT Exam App</title>
   <style>
     body {
       margin: 0;
@@ -80,7 +80,7 @@
 
   <!-- 1. HERO SECTION -->
   <header>
-    <h1>Welcome to ExamNow</h1>
+    <h1>Welcome to ExameNow</h1>
     <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
   </header>
 
@@ -90,7 +90,8 @@
       <div class="row">
         <div class="col-md-4 offset-md-4">
           <h2 class="text-center">Login</h2>
-          <form action="http://localhost/examnow/examenow/php/controller/login.php" method="POST">
+          <!-- <form action="http://localhost/examnow/examenow/php/controller/login.php" method="POST"> -->
+          <form action="http://examenow/php/controller/login.php" method="POST">
             <p class="text-danger">
               <?php
               if (isset($_SESSION['login_error'])) {
