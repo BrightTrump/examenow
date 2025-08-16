@@ -82,7 +82,7 @@
 
   <!-- 1. HERO SECTION -->
   <header>
-    <h1>Welcome to ExamPro</h1>
+    <h1>Welcome to ExameNow</h1>
     <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
   </header>
 
@@ -122,11 +122,10 @@
   </section>
 
 
-  <!-- 7. FOOTER -->
-  <footer>
-    <p>© <?php echo date("Y"); ?> ExamPro. All rights reserved.</p>
-  </footer>
-  <!-- 7. FOOTER -->
+<!-- 7. FOOTER -->
+<?php include 'footer.php'; ?>
+<!-- 7. FOOTER -->
+
 
   <script src="assets/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
   <script src="assets/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js"></script>

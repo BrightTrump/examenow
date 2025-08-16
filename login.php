@@ -118,11 +118,10 @@
   </section>
 
 
-  <!-- 7. FOOTER -->
-  <footer>
-    <p>© <?php echo date("Y"); ?> ExamPro. All rights reserved.</p>
-  </footer>
-  <!-- 7. FOOTER -->
+<!-- 7. FOOTER -->
+<?php include 'footer.php'; ?>
+<!-- 7. FOOTER -->
+
 
   <script src="assets/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
   <script src="assets/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js"></script>

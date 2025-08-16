@@ -50,9 +50,9 @@ $performance = $_GET['performance'] ?? '0';
 </section>
 
 <!-- 7. FOOTER -->
-<footer>
-  <p>© <?php echo date("Y"); ?> ExameNow. All rights reserved.</p>
-</footer>
+<?php include 'footer.php'; ?>
+<!-- 7. FOOTER -->
+
 
 </body>
 </html>
