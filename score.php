@@ -24,12 +24,12 @@ $performance = $_GET['performance'] ?? '0';
 <body>
 
 <!-- 1. HERO SECTION -->
+
 <header>
-  <h1>Thanks for taking this test</h1>
-  <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
-  <a href="login.php" class="btn">Get Started</a>
-  
+<?php include 'header.php'; ?>
+<a href="login.php" class="btn">Get Started</a>
 </header>
+
 
 <!-- 2. ABOUT SECTION -->
 <section>
@@ -50,9 +50,9 @@ $performance = $_GET['performance'] ?? '0';
 </section>
 
 <!-- 7. FOOTER -->
-<footer>
-  <p>© <?php echo date("Y"); ?> ExameNow. All rights reserved.</p>
-</footer>
+<?php include 'footer.php'; ?>
+<!-- 7. FOOTER -->
+
 
 </body>
 </html>

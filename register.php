@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ExamPro - Online CBT Exam App</title>
+  <title>Examenow - Online CBT Exam App</title>
   <style>
     body {
       margin: 0;
@@ -79,10 +79,7 @@
 <body>
 
   <!-- 1. HERO SECTION -->
-  <header>
-    <h1>Welcome to ExamPro</h1>
-    <p>The smart way to prepare, practice, and excel in your Computer-Based Tests.</p>
-  </header>
+<?php include 'header.php'; ?>
 
 
   <section>
@@ -90,7 +87,8 @@
       <div class="row">
         <div class="col-md-4 offset-md-4">
           <h2 class="text-center">Register</h2>
-          <form action="http://localhost/examnow/examenow/php/controller/register.php" method="POST">
+          <!-- <form action="http://localhost/examnow/examenow/php/controller/register.php" method="POST"> -->
+          <form action="http://examenow/php/controller/register.php" method="POST">
             <p class="text-danger">
               <?php
               if (isset($_SESSION['register_error'])) {
@@ -186,10 +184,10 @@
     <a href="register.php" class="btn" style="background:white; color:#2563eb;">Sign Up Now</a>
   </section>
 
-  <!-- 7. FOOTER -->
-  <footer>
-    <p>© <?php echo date("Y"); ?> ExamPro. All rights reserved.</p>
-  </footer>
+<!-- 7. FOOTER -->
+<?php include 'footer.php'; ?>
+<!-- 7. FOOTER -->
+
   <script src="assets/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
   <script src="assets/bootstrap-4.0.0-dist/js/bootstrap.bundle.min.js"></script>
 </body>
