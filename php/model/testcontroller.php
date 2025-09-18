@@ -241,5 +241,20 @@ class TestController
     //         'percentage' => $percentage
     //     ]);
     }
-
+    public function getTestScheduled($user_id){
+        $prepared = "SELECT * FROM `testschedule` WHERE user_id = '$user_id'";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+           return $sql->fetch_all(MYSQLI_ASSOC);
+        }
+        return [];
+    }
+    public function getTestResults($test_id){
+        $prepared = "SELECT * FROM `performance` WHERE test_id = '$test_id'";
+        $sql = $this->connection->query($prepared);
+        if ($sql->num_rows > 0) {
+           return $sql->fetch_all(MYSQLI_ASSOC);
+        }
+        return [];
+    }
 }
