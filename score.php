@@ -25,8 +25,10 @@ $performance = $_GET['performance'] ?? '0';
 
 <!-- 1. HERO SECTION -->
 
-  <?php include 'header.php'; ?>
-  <a href="login.php" class="btn">Get Started</a>
+<header>
+<?php include 'header.php'; ?>
+<a href="login.php" class="btn">Get Started</a>
+</header>
 
 
 <!-- 2. ABOUT SECTION -->

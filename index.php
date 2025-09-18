@@ -23,9 +23,11 @@
 <body>
 
 <!-- 1. HERO SECTION -->
+<header>
 <?php include 'header.php'; ?>
 <a href="login.php" class="btn">Get Started</a>
 <a href="test.php" class="btn">Start Test</a>
+</header>
 <!-- 1. HERO SECTION -->
 
 

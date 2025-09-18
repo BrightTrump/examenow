@@ -41,6 +41,12 @@
               <p>Schedule Test</p>
             </a>
           </li>
+          <li>
+            <a href="result.php">
+              <i class="tim-icons icon-book-bookmark"></i>
+              <p>Result</p>
+            </a>
+          </li>
           
           <li class="active-pro">
             <a href="../../controller/logout.php">

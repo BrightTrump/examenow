@@ -88,7 +88,7 @@
         <div class="col-md-4 offset-md-4">
           <h2 class="text-center">Register</h2>
           <!-- <form action="http://localhost/examnow/examenow/php/controller/register.php" method="POST"> -->
-          <form action="http://examenow/php/controller/register.php" method="POST">
+          <form action="<?=$this->url?>php/controller/register.php" method="POST">
             <p class="text-danger">
               <?php
               if (isset($_SESSION['register_error'])) {

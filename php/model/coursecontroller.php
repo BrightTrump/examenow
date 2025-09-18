@@ -234,4 +234,5 @@ class CourseController
             echo '<option value="">No courses found</option>';
         }
     }
+    
 }
