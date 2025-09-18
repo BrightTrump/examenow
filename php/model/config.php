@@ -18,6 +18,5 @@ class config{
     public function getConnection() {
         return $this->connection;
     }
-
-    
+    public $url = "https://homelands.online"; 
 }
