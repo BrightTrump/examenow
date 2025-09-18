@@ -3,7 +3,7 @@
 class TestController
 {
     public $connection;
-    public $url = "http://localhost/examnow/examenow/";
+    public $url = "http://localhost/work/examenow/";
 
     public function __construct()
     {
