@@ -24,4 +24,3 @@ class config{
     }
      public $url = "https://taketest.online"; 
 }
-//  $url2 = "http://localhost/work/examenow/"; 
