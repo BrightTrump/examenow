@@ -3,7 +3,7 @@
 class DepartmentController
 {
     public $connection;
-    public $url =  "http://localhost/work/examenow/";
+    public $url = "https://taketest.online/";
 
     public function __construct()
     {
