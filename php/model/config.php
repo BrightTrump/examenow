@@ -1,14 +1,14 @@
 <?php 
 session_start();
 class config{
+     public $host = "localhost";
+     public $user = "u787607796_examenow";
+     public $password = "Examenow1234@";
+     public $database = "u787607796_examenow";
     // public $host = "localhost";
-    // public $user = "u629877266_examenow";
-    // public $password = "Examenow1234@";
-    // public $database = "u629877266_examenow";
-    public $host = "localhost";
-    public $user = "root";
-    public $password = "";
-    public $database = "examenow";
+    // public $user = "root";
+    // public $password = "";
+    // public $database = "examenow";
 
     public $connection;
 
@@ -22,5 +22,6 @@ class config{
     public function getConnection() {
         return $this->connection;
     }
-    public $url = "https://homelands.online"; 
+     public $url = "https://taketest.online"; 
 }
+//  $url2 = "http://localhost/work/examenow/"; 

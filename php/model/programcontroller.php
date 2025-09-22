@@ -3,7 +3,7 @@
 class ProgramController
 {
     public $connection;
-    public $url = "http://localhost/examnow/examenow/";
+    public $url = "https://taketest.online/";
 
     public function __construct()
     {

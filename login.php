@@ -87,8 +87,7 @@
       <div class="row">
         <div class="col-md-4 offset-md-4">
           <h2 class="text-center">Login</h2>
-          <!-- <form action="http://localhost/examnow/examenow/php/controller/login.php" method="POST"> -->
-          <form action="<?=$this->url?>php/controller/login.php" method="POST">
+             <form action="<?= $this->url ?>php/controller/login.php" method="POST">
             <p class="text-danger">
               <?php
               if (isset($_SESSION['login_error'])) {
