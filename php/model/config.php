@@ -22,6 +22,6 @@ class config{
     public function getConnection() {
         return $this->connection;
     }
-    // public $url = "https://homelands.online"; 
+     public $url = "https://taketest.online"; 
 }
- $url2 = "http://localhost/work/examenow/"; 
+//  $url2 = "http://localhost/work/examenow/"; 
