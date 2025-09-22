@@ -52,7 +52,7 @@ $course = new CourseController();
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
-                    <h2 class="card-title">Create test questions for each course you handle</h2>
+                    <h2 class="card-title">Check test results</h2>
                   </div>
                 </div>
               </div>

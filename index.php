@@ -103,7 +103,7 @@
 <section style="text-align: center; background: #2563eb; color: white;">
   <h2>Ready to Get Started?</h2>
   <p>Join thousands of students improving their scores today.</p>
-  <a href="register.php" class="btn" style="background:white; color:#2563eb;">Sign Up Now</a>
+  <a href="test.php" class="btn" style="background:white; color:#2563eb;">Take test</a>
 </section>
 
 <!-- 7. FOOTER -->
