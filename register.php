@@ -87,7 +87,7 @@
       <div class="row">
         <div class="col-md-4 offset-md-4">
           <h2 class="text-center">Register</h2>
-          <form action="<?=$url2?>php/controller//register.php" method="POST">
+          <form action="<?= $this->url ?>php/controller/register.php" method="POST">
             <p class="text-danger">
               <?php
               if (isset($_SESSION['register_error'])) {
