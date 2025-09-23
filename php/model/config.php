@@ -23,4 +23,4 @@ class config{
         return $this->connection;
     }
 }
- $url = "https://taketest.online"; 
+ $url = "https://taketest.online/"; 
