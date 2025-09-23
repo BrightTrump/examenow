@@ -22,5 +22,5 @@ class config{
     public function getConnection() {
         return $this->connection;
     }
-     public $url = "https://taketest.online"; 
 }
+ $url = "https://taketest.online"; 
