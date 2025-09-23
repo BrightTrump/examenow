@@ -5,9 +5,7 @@ $testController = new TestController();
 $schedule_id = $_SESSION['schedule_id'];
 
 $course_id = $testController->getcoursefromschedule($schedule_id);
-
-
-
+var_dump($course_id);
 $questions = [];
 if ($course_id) {
     $questions = $testController->getQuestionsByCourse($course_id);
