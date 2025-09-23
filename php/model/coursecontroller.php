@@ -211,7 +211,7 @@ class CourseController
         if ($sql->num_rows > 0) {
             foreach ($sql as $value) {
                 echo '<div class="col-md-3">
-                    <a href="testquestion.php?id='.$value['id'].'">
+                    <a href="testquestion.php?id='.$value['course_id'].'">
                       <div class="card">
                         <div class="card-body bg-primary">
                           <h5 class="card-title text-white text-center">'.$this->courseDetails($value['course_id'])['course_name'].'</h5>
